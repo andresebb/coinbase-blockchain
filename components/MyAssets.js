@@ -2,103 +2,112 @@ import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
 import Logo from "../assets/images/search.png";
-import Btc from "../assets/images/btc.png";
 
 export const MyAssets = () => {
   return (
     <MainContainer>
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Balance</th>
-          <th>Price</th>
-          <th>Allocation</th>
-        </tr>
-        <tr>
-          <td>Bitcoin</td>
-          <td>$230.32</td>
-          <td>$5.32</td>
-          <td>41,89%</td>
-        </tr>
-      </table>
-      {/* <div>
-        <h2>Your Assets</h2>
-        <AssetsOptions>
-          <FirstOption>Name</FirstOption>
-          <p>Balance</p>
-          <p>Price</p>
-          <p>Allocation</p>
-        </AssetsOptions>
-
-        <AssetsOptions>
-          <AssetLogo>
-            <div
-              style={{
-                marginRight: "8px",
-                width: "40px",
-              }}
-            >
-              <Image src={Btc} />
-            </div>
+      <TableTitle>Your Assets</TableTitle>
+      <TableContaienr>
+        <TableFirstTr>
+          <TableName>Name</TableName>
+          <TableOption>Balance</TableOption>
+          <TableOption>Price</TableOption>
+          <TableOption>Allocation</TableOption>
+        </TableFirstTr>
+        <TableSecondTr>
+          <td>
             <AssetName>
-              <p>Bitcoin</p>
-              <span>BTC</span>
+              <Image src={Logo} />
+              <ShortName>
+                <p>Bitcoin</p>
+                <TextGray>BTC</TextGray>
+              </ShortName>
             </AssetName>
-          </AssetLogo>
-          <AssetBalance>
+          </td>
+          <TableTd>
             <p>$230.32</p>
-            <span>6.5564855 BTC</span>
-          </AssetBalance>
-          <AssetPrice>
+            <TextGray>6.2568455</TextGray>
+          </TableTd>
+          <TableTd>
             <p>$5.32</p>
-            <span>-4,74%</span>
-          </AssetPrice>
-          <AssetAllocation>
-            <p>41,89%</p>
-          </AssetAllocation>
-        </AssetsOptions>
-      </div> */}
+            <p>-4,24%</p>
+          </TableTd>
+          <TableTd>
+            <p>%41.59</p>
+          </TableTd>
+          <td>...</td>
+        </TableSecondTr>
+      </TableContaienr>
     </MainContainer>
   );
 };
 
 const MainContainer = styled.div`
   grid-area: main;
+  padding: 0 16px;
 `;
 
-const AssetsOptions = styled.div`
-  display: flex;
-  align-items: center;
+const TableTitle = styled.p`
+  border: 1px solid #ffffff42;
+  padding: 20px;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  font-size: 20px;
+  margin: 0;
+`;
+
+const TableContaienr = styled.table`
   width: 100%;
-  justify-content: space-between;
+  border-collapse: collapse;
+
+  padding: 12px;
+  border-radius: 6px;
 `;
 
-const FirstOption = styled.div`
-  width: 33%;
+const TableFirstTr = styled.tr`
+  border-bottom: 1px solid #ffffff42;
+  border-right: 1px solid #ffffff42;
+  border-left: 1px solid #ffffff42;
 `;
 
-const AssetContainer = styled.div`
-  width: 100%;
+const TableName = styled.th`
+  width: 40%;
+  text-align: left;
+  padding: 22px 0px;
+  padding-left: 20px;
 `;
 
-const AssetLogo = styled.div`
-  width: 33%;
-  display: flex;
-  align-items: center;
+const TableOption = styled.th`
+  text-align: left;
+  width: 20%;
+`;
+
+const TableSecondTr = styled.tr`
+  border-bottom: 1px solid #ffffff42;
+  border-right: 1px solid #ffffff42;
+  border-left: 1px solid #ffffff42;
 `;
 
 const AssetName = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  padding-left: 20px;
   p {
-    font-weight: bold;
     margin: 0;
-    margin-bottom: 4px;
-  }
-
-  span {
-    color: #59585b;
   }
 `;
 
-const AssetBalance = styled.div``;
-const AssetPrice = styled.div``;
-const AssetAllocation = styled.div``;
+const ShortName = styled.div`
+  margin-left: 10px;
+`;
+
+const TableTd = styled.td`
+  p {
+    margin: 0;
+  }
+`;
+
+const TextGray = styled.p`
+  color: #8c8b8f;
+`;
