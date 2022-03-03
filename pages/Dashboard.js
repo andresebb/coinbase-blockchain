@@ -1,13 +1,18 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { coins } from "../components/coins";
 import { Header } from "../components/Header";
 import { navItems } from "../components/navItems";
 import { PopUp } from "../components/PopUp";
-import Portfolio from "../components/Portfolio";
+import { Portfolio } from "../components/Portfolio";
 import { SideBar } from "../components/SideBar";
+import { useGetTokens } from "../hooks/useGetTokens";
 
 export const Dashboard = ({ address }) => {
+  const { sanityTokens, thirdWebTokens } = useGetTokens();
+
+  console.log(sanityTokens, thirdWebTokens);
+
   return (
     <DashboardContainer>
       <Header walletAddress={address} />
