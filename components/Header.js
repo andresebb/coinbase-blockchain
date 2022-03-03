@@ -1,14 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-export const Header = () => {
+export const Header = ({ walletAddress }) => {
   return (
     <HeaderContainer>
       <h1>Assets</h1>
       <HeaderActionsContainer>
         <WalletAdress>
           <h4>Wallet Connected</h4>
-          <p>02scC5ds...0xedefe</p>
+          <p>
+            {walletAddress.slice(0, 7)}...{walletAddress.slice(35)}
+          </p>
         </WalletAdress>
         <BuyButton>Buy / Sell</BuyButton>
         <SendButton>Send / Receive</SendButton>
@@ -64,6 +66,10 @@ const BuyButton = styled.div`
   color: black;
   margin-left: 22px;
   cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 const SendButton = styled.div`
@@ -74,4 +80,8 @@ const SendButton = styled.div`
   font-weight: bold;
   margin-left: 22px;
   cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;

@@ -1,34 +1,29 @@
+import React, { useState } from "react";
 import Image from "next/image";
-import React from "react";
 import styled from "styled-components";
-import coinbaseLogo from "../assets/images/cb-logo.png";
-import imagen from "../assets/images/search.png";
+import coinbaseLogo from "../assets/cb-logo.png";
 
-export const SideBar = () => {
+export const SideBar = ({ navItems }) => {
+  const [activeIcon, SetactiveIcon] = useState(navItems[0].title);
+
   return (
     <SideBarContainer>
       <LogoContainer>
         <Image src={coinbaseLogo} alt="Picture of the author" />
       </LogoContainer>
       <div>
-        <OptionsContainer>
-          <OptionImageContainer>
-            <Image src={imagen} alt="Picture of the author" />
-          </OptionImageContainer>
-          <p>Assets</p>
-        </OptionsContainer>
-        <OptionsContainer>
-          <OptionImageContainer>
-            <Image src={imagen} alt="Picture of the author" />
-          </OptionImageContainer>
-          <p>Assets</p>
-        </OptionsContainer>
-        <OptionsContainer>
-          <OptionImageContainer>
-            <Image src={imagen} alt="Picture of the author" />
-          </OptionImageContainer>
-          <p>Assets</p>
-        </OptionsContainer>
+        {navItems.map((item, index) => {
+          return (
+            <NavItem key={index} onClick={() => SetactiveIcon(item.title)}>
+              <NavIcon
+                style={{ color: item.title === activeIcon && "#3777f5" }}
+              >
+                {item.icon}
+              </NavIcon>
+              <p>{item.title}</p>
+            </NavItem>
+          );
+        })}
       </div>
     </SideBarContainer>
   );
@@ -45,18 +40,27 @@ const LogoContainer = styled.div`
   margin: 24px 0;
 `;
 
-const OptionsContainer = styled.div`
+const NavItem = styled.div`
   display: flex;
   align-items: center;
+  font-size: 18px;
+  padding: 0 12px;
+  border-radius: 8px;
   margin-bottom: 22px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #141519;
+  }
 
   p {
     font-weight: bold;
   }
 `;
 
-const OptionImageContainer = styled.div`
-  padding: 6px;
+const NavIcon = styled.div`
+  padding: 12px;
+  font-size: 20px;
   background: #121316;
   border-radius: 100px;
   display: flex;

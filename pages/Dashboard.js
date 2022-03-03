@@ -1,16 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import { coins } from "../components/coins";
 import { Header } from "../components/Header";
-import { MyAssets } from "../components/MyAssets";
+import { navItems } from "../components/navItems";
 import { PopUp } from "../components/PopUp";
+import Portfolio from "../components/Portfolio";
 import { SideBar } from "../components/SideBar";
 
 export const Dashboard = ({ address }) => {
   return (
     <DashboardContainer>
-      <Header />
-      <SideBar />
-      <MyAssets />
+      <Header walletAddress={address} />
+      <SideBar navItems={navItems} />
+      {coins.length > 0 && <Portfolio coins={coins} />}
       <PopUp />
     </DashboardContainer>
   );
@@ -18,11 +20,17 @@ export const Dashboard = ({ address }) => {
 
 const DashboardContainer = styled.div`
   color: white;
-  height: 100vh;
   display: grid;
+  padding-bottom: 42px;
   background-color: #0a090c;
   grid-template-columns: 250px 1fr 24%;
-  grid-template-rows: auto 1fr 1fr;
+  /* grid-template-rows: auto 1fr 1fr; */
+
+  overflow: hidden;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
   grid-template-areas:
     "sidebar header header"
     "sidebar main pops"
