@@ -24,10 +24,11 @@ const DashboardContainer = styled.div`
   padding-bottom: 42px;
   background-color: #0a090c;
   grid-template-columns: 250px 1fr 24%;
-  /* grid-template-rows: auto 1fr 1fr; */
+  grid-template-rows: auto 1fr 1fr;
 
+  height: 100vh;
   overflow: hidden;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   ::-webkit-scrollbar {
     display: none;
   }

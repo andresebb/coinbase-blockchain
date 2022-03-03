@@ -11,7 +11,7 @@ export const SideBar = ({ navItems }) => {
       <LogoContainer>
         <Image src={coinbaseLogo} alt="Picture of the author" />
       </LogoContainer>
-      <div>
+      <ItemsContainer>
         {navItems.map((item, index) => {
           return (
             <NavItem key={index} onClick={() => SetactiveIcon(item.title)}>
@@ -24,7 +24,7 @@ export const SideBar = ({ navItems }) => {
             </NavItem>
           );
         })}
-      </div>
+      </ItemsContainer>
     </SideBarContainer>
   );
 };
@@ -67,4 +67,13 @@ const NavIcon = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 14px;
+`;
+
+const ItemsContainer = styled.div`
+  overflow-y: scroll;
+  height: 100vh;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;

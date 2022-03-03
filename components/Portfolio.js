@@ -16,4 +16,12 @@ export default Portfolio;
 
 const Wrapper = styled.div`
   padding: 0 16px;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 100vh;
+  padding-bottom: 150px;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
