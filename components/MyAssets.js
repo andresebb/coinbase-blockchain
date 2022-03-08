@@ -3,7 +3,14 @@ import React from "react";
 import styled from "styled-components";
 import more from "../assets/more.png";
 
-export const MyAssets = ({ coins }) => {
+export const MyAssets = ({
+  coins,
+  walletAddress,
+  sanityTokens,
+  thirdWebTokens,
+}) => {
+  // console.log(thirdWebTokens, sanityTokens, walletAddress);
+
   return (
     <MainContainer>
       <TableTitle>Your Assets</TableTitle>

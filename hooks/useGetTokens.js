@@ -25,7 +25,9 @@ export const useGetTokens = () => {
       setSanityTokens(tempSanityToken.result);
 
       setThirdWebTokens(
-        sanityTokens.map((token) => sdk.getTokenModule(token.contractAddress))
+        tempSanityToken.result.map((token) =>
+          sdk.getTokenModule(token.contractAddress)
+        )
       );
     };
     getTokens();

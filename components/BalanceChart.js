@@ -47,12 +47,12 @@ const options = {
   },
 };
 
-export const BalanceChart = () => {
+export const BalanceChart = ({ walletBalance }) => {
   return (
     <Wrapper>
       <TitleWrapper>
         <Title>Portfolio Balance</Title>
-        <Balance>$46,000</Balance>
+        <Balance>${walletBalance}</Balance>
       </TitleWrapper>
       <Line data={data} options={options} width={400} height={100} />
     </Wrapper>

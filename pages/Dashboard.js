@@ -11,13 +11,22 @@ import { useGetTokens } from "../hooks/useGetTokens";
 export const Dashboard = ({ address }) => {
   const { sanityTokens, thirdWebTokens } = useGetTokens();
 
-  console.log(sanityTokens, thirdWebTokens);
-
   return (
     <DashboardContainer>
-      <Header walletAddress={address} />
+      <Header
+        walletAddress={address}
+        sanityTokens={sanityTokens}
+        thirdWebTokens={thirdWebTokens}
+      />
       <SideBar navItems={navItems} />
-      {coins.length > 0 && <Portfolio coins={coins} />}
+      {coins.length > 0 && (
+        <Portfolio
+          coins={coins}
+          walletAddress={address}
+          sanityTokens={sanityTokens}
+          thirdWebTokens={thirdWebTokens}
+        />
+      )}
       <PopUp />
     </DashboardContainer>
   );
