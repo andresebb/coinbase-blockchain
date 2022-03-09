@@ -1,7 +1,31 @@
 import React from "react";
 import styled from "styled-components";
+import Modal from "react-modal";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { TransferModal } from "./modal/TransferModal";
+
+Modal.setAppElement("#__next");
 
 export const Header = ({ walletAddress }) => {
+  const router = useRouter();
+
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      transform: "translate(-50%, -50%)",
+      backgroundColor: "#0a0b®d",
+      padding: 0,
+      border: "none",
+    },
+    overlay: {
+      backgroundColor: "rgba(10, 11, 13, 0.75)",
+    },
+  };
+
   return (
     <HeaderContainer>
       <h1>Assets</h1>
@@ -13,8 +37,17 @@ export const Header = ({ walletAddress }) => {
           </p>
         </WalletAdress>
         <BuyButton>Buy / Sell</BuyButton>
-        <SendButton>Send / Receive</SendButton>
+        <Link href={"/?transfer=1"}>
+          <SendButton>Send / Receive</SendButton>
+        </Link>
       </HeaderActionsContainer>
+      <Modal
+        isOpen={!!router.query.transfer}
+        onRequestClose={() => router.push("/")}
+        style={customStyles}
+      >
+        <TransferModal />
+      </Modal>
     </HeaderContainer>
   );
 };

@@ -14,6 +14,7 @@ export const Portfolio = ({
   const tokenToUSD = {};
 
   //I got it
+  //Get the price for the each coin
   for (const token of sanityTokens) {
     tokenToUSD[token.contractAddress] = Number(token.usdPrice);
   }
@@ -29,15 +30,13 @@ export const Portfolio = ({
       })
     );
 
-    let total = totalBalance.reduce((acc, curr) => acc + curr, 0);
+    let total = await totalBalance.reduce((acc, curr) => acc + curr, 0);
     setWalletBalance(total.toLocaleString("en-US"));
   };
 
   useEffect(() => {
     calculateTotalBalance();
-  }, []);
-
-  console.log(walletBalance);
+  }, [sanityTokens, thirdWebTokens]);
 
   return (
     <Wrapper>
