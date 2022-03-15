@@ -7,7 +7,7 @@ import { TransferModal } from "./modal/TransferModal";
 
 Modal.setAppElement("#__next");
 
-export const Header = ({ walletAddress }) => {
+export const Header = ({ walletAddress, sanityTokens, thirdWebTokens }) => {
   const router = useRouter();
 
   const customStyles = {
@@ -46,7 +46,11 @@ export const Header = ({ walletAddress }) => {
         onRequestClose={() => router.push("/")}
         style={customStyles}
       >
-        <TransferModal />
+        <TransferModal
+          sanityToken={sanityTokens}
+          thirdWebTokens={thirdWebTokens}
+          WalletAddress={walletAddress}
+        />
       </Modal>
     </HeaderContainer>
   );
